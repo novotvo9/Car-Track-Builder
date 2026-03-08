@@ -4,20 +4,82 @@
 // menu a editor - uživatelská rozhraní (skrýt editor a načíst mapu se seznamem tratí) .hidden
 
 const size = 20;
+let map = [];
 
-export function addTestCell(gridParentEl) {
+export function initGrid() {
+
+    const gridParentEl = document.getElementById("gridParent");
+    createMapData();
+    createGrid(gridParentEl);
+    gridParentEl.addEventListener("click", onGridClick);
+}
+
+function createGrid(gridParentEl) {
+
+    gridParentEl.innerHTML = "";
 
     for (let row = 0; row < size; row++) {
+        for (let col = 0; col < size; col++) {
+            const cellEl = document.createElement("div");
+            cellEl.classList.add("cell", "grass");
+
+            cellEl.dataset.row = row;
+            cellEl.dataset.col = col;
+
+            gridParentEl.appendChild(cellEl);
+        }
+    }
+}
+
+function onGridClick(e) {
+
+    const cell = e.target;
+
+    if (!cell.classList.contains("cell")) {
+        return;
+    }
+
+    const row = Number(cell.dataset.row);
+    const col = Number(cell.dataset.col);
+
+    const currentType = map[row][col];
+
+    if (currentType === "grass") {
+        map[row][col] = "road";
+    }
+    else if (currentType === "road") {
+        map[row][col] = "water";
+    }
+    else {
+        map[row][col] = "grass";
+    }
+
+    updateCellVisual(cell, map[row][col]);
+
+}
+
+function createMapData() {
+    map = [];
+
+    for (let row = 0; row < size; row++) {
+        const currentRow = [];
 
         for (let col = 0; col < size; col++) {
 
-            const cellEl = document.createElement("div");
-            cellEl.classList.add("cell");
-
-            gridParentEl.appendChild(cellEl);
-
+            currentRow.push("grass");
         }
 
+        map.push(currentRow);
     }
+
+}
+
+function updateCellVisual(cell, type) {
+
+    cell.classList.remove("grass");
+    cell.classList.remove("road");
+    cell.classList.remove("water");
+
+    cell.classList.add(type);
 
 }

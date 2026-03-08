@@ -6,12 +6,38 @@
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(20, 30px);
+    grid-template-columns: repeat(20, 40px);
     gap: 2px;
 }
 
 .cell{
-    width: 30px;
-    height: 30px;
-    background-color: green;
+    width:40px;
+    height:40px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    border: 1px solid black;
+}
+
+.cell:hover{
+    outline: 2px solid white;
+    outline-offset: -2px;
+    cursor: pointer;
+}
+
+.grass{
+    background-image:url("./src/assets/grass.png");
+}
+
+.road{
+    background-image:url("./src/assets/road.png");
+}
+
+.water{
+    background-image:url("./src/assets/water.png");
+}
+
+footer{
+    padding: 2rem;
+    text-align: center;
 }
