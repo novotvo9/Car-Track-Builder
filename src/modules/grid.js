@@ -5,13 +5,18 @@
 
 const size = 20;
 let map = [];
+let isGridListenerAdded = false;
 
 export function initGrid() {
 
     const gridParentEl = document.getElementById("gridParent");
     createMapData();
     createGrid(gridParentEl);
-    gridParentEl.addEventListener("click", onGridClick);
+
+    if (isGridListenerAdded === false) {
+        gridParentEl.addEventListener("click", onGridClick);
+        isGridListenerAdded = true;
+    }
 }
 
 function createGrid(gridParentEl) {
@@ -82,4 +87,8 @@ function updateCellVisual(cell, type) {
 
     cell.classList.add(type);
 
+}
+
+export function getMapData() {
+    return map;
 }
