@@ -1,3 +1,3 @@
-import { initGrid } from "./modules/grid.js";
+import { initApp } from "./modules/ui.js";
 
-initGrid();
+initApp();
