@@ -26,7 +26,7 @@ function createGrid(gridParentEl) {
     for (let row = 0; row < size; row++) {
         for (let col = 0; col < size; col++) {
             const cellEl = document.createElement("div");
-            cellEl.classList.add("cell", "grass");
+            cellEl.classList.add("cell", map[row][col]);
 
             cellEl.dataset.row = row;
             cellEl.dataset.col = col;
@@ -34,6 +34,11 @@ function createGrid(gridParentEl) {
             gridParentEl.appendChild(cellEl);
         }
     }
+}
+
+export function renderGrid() {
+    const gridParentEl = document.getElementById("gridParent");
+    createGrid(gridParentEl);
 }
 
 function onGridClick(e) {
@@ -91,4 +96,8 @@ function updateCellVisual(cell, type) {
 
 export function getMapData() {
     return map;
+}
+
+export function setMapData(newMap) {
+    map = newMap;
 }
