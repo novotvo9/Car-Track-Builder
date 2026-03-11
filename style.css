@@ -10,6 +10,39 @@
     gap: 2px;
 }
 
+header{
+    padding: 0.5rem 0;
+}
+
+main{
+    padding: 1rem;
+}
+
+#menuScreen{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+button{
+    padding: 0.3rem 0.6rem;
+}
+
+h1{
+    margin: 0.2rem;
+}
+
+.editorBar{
+    margin-top: 0.3rem;
+}
+
+#exportOutput{
+    margin-top: 0.3rem;
+}
+
+#backToMenuBtn{
+    margin-bottom: 0.5rem;
+}
+
 .cell{
     width:40px;
     height:40px;
@@ -38,7 +71,7 @@
 }
 
 footer{
-    padding: 2rem;
+    padding: 0.5rem;
     text-align: center;
 }
 
