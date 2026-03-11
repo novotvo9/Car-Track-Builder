@@ -8,7 +8,6 @@ let map = [];
 let isGridListenerAdded = false;
 
 export function initGrid() {
-
     const gridParentEl = document.getElementById("gridParent");
     createMapData();
     createGrid(gridParentEl);
@@ -19,8 +18,12 @@ export function initGrid() {
     }
 }
 
-function createGrid(gridParentEl) {
+export function renderGrid() {
+    const gridParentEl = document.getElementById("gridParent");
+    createGrid(gridParentEl);
+}
 
+function createGrid(gridParentEl) {
     gridParentEl.innerHTML = "";
 
     for (let row = 0; row < size; row++) {
@@ -36,13 +39,7 @@ function createGrid(gridParentEl) {
     }
 }
 
-export function renderGrid() {
-    const gridParentEl = document.getElementById("gridParent");
-    createGrid(gridParentEl);
-}
-
 function onGridClick(e) {
-
     const cell = e.target;
 
     if (!cell.classList.contains("cell")) {
@@ -65,7 +62,6 @@ function onGridClick(e) {
     }
 
     updateCellVisual(cell, map[row][col]);
-
 }
 
 function createMapData() {
@@ -85,13 +81,11 @@ function createMapData() {
 }
 
 function updateCellVisual(cell, type) {
-
     cell.classList.remove("grass");
     cell.classList.remove("road");
     cell.classList.remove("water");
 
     cell.classList.add(type);
-
 }
 
 export function getMapData() {

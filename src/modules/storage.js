@@ -1,5 +1,4 @@
 export function saveMap(name, mapData) {
-
     if (!name) {
         alert("Zadej název mapy");
         return;
@@ -13,7 +12,6 @@ export function saveMap(name, mapData) {
 }
 
 export function loadMap(name) {
-
     if (!name) {
         alert("Zadej název mapy");
         return null;
@@ -29,4 +27,23 @@ export function loadMap(name) {
     const mapData = JSON.parse(json);
 
     return mapData;
+}
+
+export function getSavedMapNames() {
+    const names = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+
+        const key = localStorage.key(i);
+
+        if (key.substring(0, 6) === "track_") {
+
+            const name = key.substring(6);
+
+            names.push(name);
+        }
+
+    }
+
+    return names;
 }

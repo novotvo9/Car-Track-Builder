@@ -1,8 +1,7 @@
 import { initGrid, getMapData, setMapData, renderGrid } from "./grid.js";
-import { saveMap, loadMap } from "./storage.js";
+import { saveMap, loadMap, getSavedMapNames } from "./storage.js";
 
 export function initApp() {
-
     const newMapBtn = document.getElementById("newMapBtn");
     const backBtn = document.getElementById("backToMenuBtn");
     const saveBtn = document.getElementById("saveMapBtn");
@@ -12,6 +11,9 @@ export function initApp() {
     backBtn.addEventListener("click", showMenu);
     saveBtn.addEventListener("click", saveCurrentMap);
     loadBtn.addEventListener("click", loadCurrentMap);
+
+    console.log(getSavedMapNames());
+    fillSavedMapsSelect();
 }
 
 function startNewMap() {
@@ -41,7 +43,14 @@ function saveCurrentMap() {
 
 function loadCurrentMap() {
 
-    const name = document.getElementById("loadMapNameInput").value;
+    const selectEl = document.getElementById("savedMapsSelect");
+    const name = selectEl.value;
+
+    if (name === "") {
+        alert("Vyber mapu");
+        return;
+    }
+
     const loadedMap = loadMap(name);
 
     if (loadedMap === null) {
@@ -56,4 +65,22 @@ function loadCurrentMap() {
 
     setMapData(loadedMap);
     renderGrid();
+}
+
+function fillSavedMapsSelect() {
+
+    const selectEl = document.getElementById("savedMapsSelect");
+    const names = getSavedMapNames();
+
+    selectEl.innerHTML = '<option value="">-- Vyber mapu --</option>';
+
+    for (let i = 0; i < names.length; i++) {
+
+        const optionEl = document.createElement("option");
+
+        optionEl.value = names[i];
+        optionEl.innerText = names[i];
+
+        selectEl.appendChild(optionEl);
+    }
 }
