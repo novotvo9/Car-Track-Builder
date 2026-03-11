@@ -1,16 +1,19 @@
 import { initGrid, getMapData, setMapData, renderGrid } from "./grid.js";
-import { saveMap, loadMap, getSavedMapNames } from "./storage.js";
+import { saveMap, loadMap, getSavedMapNames, exportMap } from "./storage.js";
 
 export function initApp() {
     const newMapBtn = document.getElementById("newMapBtn");
     const backBtn = document.getElementById("backToMenuBtn");
     const saveBtn = document.getElementById("saveMapBtn");
     const loadBtn = document.getElementById("loadMapBtn");
+    const exportBtn = document.getElementById("exportMapBtn");
+
 
     newMapBtn.addEventListener("click", startNewMap);
     backBtn.addEventListener("click", showMenu);
     saveBtn.addEventListener("click", saveCurrentMap);
     loadBtn.addEventListener("click", loadCurrentMap);
+    exportBtn.addEventListener("click", exportCurrentMap);
 
     console.log(getSavedMapNames());
     fillSavedMapsSelect();
@@ -83,4 +86,15 @@ function fillSavedMapsSelect() {
 
         selectEl.appendChild(optionEl);
     }
+}
+
+function exportCurrentMap() {
+
+    const mapData = getMapData();
+
+    const json = exportMap(mapData);
+
+    const outputEl = document.getElementById("exportOutput");
+
+    outputEl.value = json;
 }

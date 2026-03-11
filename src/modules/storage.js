@@ -18,7 +18,6 @@ export function loadMap(name) {
     }
 
     const json = localStorage.getItem("track_" + name);
-
     if (json === null) {
         alert("Mapa nebyla nalezena");
         return null;
@@ -33,7 +32,6 @@ export function getSavedMapNames() {
     const names = [];
 
     for (let i = 0; i < localStorage.length; i++) {
-
         const key = localStorage.key(i);
 
         if (key.substring(0, 6) === "track_") {
@@ -42,8 +40,13 @@ export function getSavedMapNames() {
 
             names.push(name);
         }
-
     }
 
     return names;
+}
+
+export function exportMap(mapData) {
+    const json = JSON.stringify(mapData, null, 2);
+
+    return json;
 }
