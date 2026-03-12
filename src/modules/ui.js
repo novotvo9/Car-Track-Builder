@@ -30,6 +30,7 @@ function startNewMap() {
 }
 
 function showMenu() {
+    fillSavedMapsSelect();
     const menuScreenEl = document.getElementById("menuScreen");
     const editorScreenEl = document.getElementById("editorScreen");
 
