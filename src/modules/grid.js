@@ -2,8 +2,10 @@ const size = 20;
 let map = [];
 let isGridListenerAdded = false;
 
+const gridParentEl = document.getElementById("gridParent");
+
 export function initGrid() {
-    const gridParentEl = document.getElementById("gridParent");
+
     createMapData();
     createGrid(gridParentEl);
 
@@ -14,7 +16,6 @@ export function initGrid() {
 }
 
 export function renderGrid() {
-    const gridParentEl = document.getElementById("gridParent");
     createGrid(gridParentEl);
 }
 

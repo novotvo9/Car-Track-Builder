@@ -1,6 +1,10 @@
 import { initGrid, getMapData, setMapData, renderGrid } from "./grid.js";
 import { saveMap, loadMap, getSavedMapNames, exportMap } from "./storage.js";
 
+const menuScreenEl = document.getElementById("menuScreen");
+const editorScreenEl = document.getElementById("editorScreen");
+const selectEl = document.getElementById("savedMapsSelect");
+
 export function initApp() {
     const newMapBtn = document.getElementById("newMapBtn");
     const backBtn = document.getElementById("backToMenuBtn");
@@ -19,9 +23,6 @@ export function initApp() {
 }
 
 function startNewMap() {
-    const menuScreenEl = document.getElementById("menuScreen");
-    const editorScreenEl = document.getElementById("editorScreen");
-
     menuScreenEl.classList.add("hidden");
     editorScreenEl.classList.remove("hidden");
 
@@ -30,8 +31,6 @@ function startNewMap() {
 
 function showMenu() {
     fillSavedMapsSelect();
-    const menuScreenEl = document.getElementById("menuScreen");
-    const editorScreenEl = document.getElementById("editorScreen");
 
     editorScreenEl.classList.add("hidden");
     menuScreenEl.classList.remove("hidden");
@@ -45,7 +44,6 @@ function saveCurrentMap() {
 }
 
 function loadCurrentMap() {
-    const selectEl = document.getElementById("savedMapsSelect");
     const name = selectEl.value;
 
     if (name === "") {
@@ -70,7 +68,6 @@ function loadCurrentMap() {
 }
 
 function fillSavedMapsSelect() {
-    const selectEl = document.getElementById("savedMapsSelect");
     const names = getSavedMapNames();
 
     selectEl.innerHTML = '<option value="">-- Vyber mapu --</option>';
