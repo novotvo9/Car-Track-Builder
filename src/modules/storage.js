@@ -7,8 +7,6 @@ export function saveMap(name, mapData) {
     const json = JSON.stringify(mapData);
 
     localStorage.setItem("track_" + name, json);
-
-    console.log(localStorage);
 }
 
 export function loadMap(name) {

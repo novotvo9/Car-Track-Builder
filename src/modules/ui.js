@@ -15,7 +15,6 @@ export function initApp() {
     loadBtn.addEventListener("click", loadCurrentMap);
     exportBtn.addEventListener("click", exportCurrentMap);
 
-    console.log(getSavedMapNames());
     fillSavedMapsSelect();
 }
 
@@ -46,7 +45,6 @@ function saveCurrentMap() {
 }
 
 function loadCurrentMap() {
-
     const selectEl = document.getElementById("savedMapsSelect");
     const name = selectEl.value;
 
@@ -72,7 +70,6 @@ function loadCurrentMap() {
 }
 
 function fillSavedMapsSelect() {
-
     const selectEl = document.getElementById("savedMapsSelect");
     const names = getSavedMapNames();
 
@@ -90,7 +87,6 @@ function fillSavedMapsSelect() {
 }
 
 function exportCurrentMap() {
-
     const mapData = getMapData();
 
     const json = exportMap(mapData);
